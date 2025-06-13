@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misha Foodstuffs Limited - Korean Food Mart & Distributor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #25d366;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid #f8f9fa;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #ff6b6b;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,107,107,0.1), rgba(255,142,142,0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .product-image::before {
+            opacity: 1;
+        }
+
+        .product-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+
+        .contact-title {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .contact-details {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .contact-details a {
+            color: #ff6b6b;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: #ff5252;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header-content p {
+                font-size: 1.1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Misha Foodstuffs Limited</h1>
+                <p>Korean Food Mart & Distributor</p>
+                <p>Your go-to supplier for quality Korean groceries, kimchi, ramen, snacks & more.</p>
+                <a href="https://wa.me/254797005509" class="cta-button" target="_blank">
+                    📱 Order on WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1543363950-c78545037afc?w=400&h=300&fit=crop')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Kimchi</h3>
+                        <p class="product-description">Authentic Korean fermented cabbage, rich in probiotics and bursting with flavor. Perfect as a side dish or ingredient.</p>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Tteokbokki</h3>
+                        <p class="product-description">Chewy Korean rice cakes in spicy-sweet sauce. A popular Korean street food that's perfect for sharing.</p>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=400&h=300&fit=crop')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Instant Ramen</h3>
+                        <p class="product-description">Premium Korean instant noodles with rich, savory broths. Quick, convenient, and absolutely delicious.</p>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=400&h=300&fit=crop')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Snacks</h3>
+                        <p class="product-description">A variety of traditional and modern Korean snacks, from crispy seaweed to sweet rice cakes and more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3 class="contact-title">Location</h3>
+                    <p class="contact-details">Samaki Drive Number 13<br>Nairobi, Kenya</p>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">☎️</div>
+                    <h3 class="contact-title">Phone</h3>
+                    <p class="contact-details">
+                        <a href="tel:+254797005509">+254 797 005509</a>
+                    </p>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-details">
+                        <a href="mailto:mishafoodstuffs@gmail.com">mishafoodstuffs@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Misha Foodstuffs Limited. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
