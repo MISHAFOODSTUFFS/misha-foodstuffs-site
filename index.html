@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Misha Foodstuffs</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Your existing site content here -->
+
+  <!-- Right-Side Product Slider -->
+  <div class="product-slider-container">
+    <h2>More Korean Goodies</h2>
+    <div class="product-slider">
+      <button class="scroll-btn left-btn">&#8249;</button>
+      <div class="slider-track" id="sliderTrack">
+        <!-- Product Cards -->
+        <div class="product-card">
+          <img src="img/kimchi.jpg" alt="Kimchi">
+          <h4>Premium Kimchi</h4>
+          <p>KES 450</p>
+          <button>Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="img/maxim-coffee.jpg" alt="Maxim Coffee">
+          <h4>Maxim Coffee</h4>
+          <p>KES 800</p>
+          <button>Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="img/topokki.jpg" alt="Topokki">
+          <h4>Topokki</h4>
+          <p>KES 700</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+      <button class="scroll-btn right-btn">&#8250;</button>
+    </div>
+  </div>
+
+  <script>
+    const track = document.getElementById('sliderTrack');
+    const leftBtn = document.querySelector('.left-btn');
+    const rightBtn = document.querySelector('.right-btn');
+
+    leftBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -220, behavior: 'smooth' });
+    });
+
+    rightBtn.addEventListener('click', () => {
+      track.scrollBy({ left: 220, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
