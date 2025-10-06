@@ -81,6 +81,64 @@
       padding: 8px 16px;
       margin-left: 10px;
     }
+
+    /* === Uniform Product Thumbnails === */
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px auto;
+    }
+
+    .product-card {
+      width: 220px;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+      transform: scale(1.03);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 180px; /* uniform image height */
+      object-fit: cover; /* crop excess, keep proportions */
+      border-radius: 8px;
+    }
+
+    .product-info {
+      margin-top: 10px;
+    }
+
+    .product-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .product-description {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+      .product-card {
+        width: 45%;
+      }
+    }
+    @media (max-width: 480px) {
+      .product-card {
+        width: 90%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -117,10 +175,35 @@
     <option value="meats">Meats</option>
   </select>
 
-  <!-- Products Section (keep your existing product cards here) -->
+  <!-- === Products Section === -->
+  <section class="product-grid container">
+    <div class="product-card">
+      <img src="images/kimchi-jar.jpg" alt="Kimchi 300g">
+      <div class="product-info">
+        <h3 class="product-title">Kimchi 300g</h3>
+        <p class="product-description">Authentic Korean fermented cabbage rich in probiotics.</p>
+        <a href="https://wa.me/254797005509?text=I'm%20interested%20in%20Kimchi%20300g" class="order-now-btn" target="_blank">Order via WhatsApp</a>
+      </div>
+    </div>
 
-  <!-- Add inside each .product-info element in products: -->
-  <!-- <a href="https://wa.me/254797005509?text=I'm%20interested%20in%20PRODUCT_NAME" class="order-now-btn" target="_blank">Order via WhatsApp</a> -->
+    <div class="product-card">
+      <img src="images/noodles.jpg" alt="Korean Noodles">
+      <div class="product-info">
+        <h3 class="product-title">Korean Noodles</h3>
+        <p class="product-description">Chewy, spicy, and delicious instant noodles from Korea.</p>
+        <a href="https://wa.me/254797005509?text=I'm%20interested%20in%20Korean%20Noodles" class="order-now-btn" target="_blank">Order via WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="images/snacks.jpg" alt="Korean Snacks">
+      <div class="product-info">
+        <h3 class="product-title">Korean Snacks</h3>
+        <p class="product-description">Tasty, crispy, and fun snacks imported directly from Korea.</p>
+        <a href="https://wa.me/254797005509?text=I'm%20interested%20in%20Korean%20Snacks" class="order-now-btn" target="_blank">Order via WhatsApp</a>
+      </div>
+    </div>
+  </section>
 
   <footer class="enhanced-footer">
     <div class="container">
