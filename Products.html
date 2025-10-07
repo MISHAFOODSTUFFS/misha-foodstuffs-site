@@ -1,211 +1,877 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Misha Foodstuffs Limited - Korean Food Mart & Distributor</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #ffffff;
-      color: #333;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .sticky-nav {
-      position: sticky;
-      top: 0;
-      background: #fff;
-      z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    nav ul li:hover .dropdown {
-      display: block;
-    }
-    .dropdown {
-      display: none;
-      position: absolute;
-      background: #fff;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-    #searchBar, #categoryFilter {
-      padding: 10px;
-      width: 100%;
-      margin: 10px auto;
-      display: block;
-      max-width: 500px;
-    }
-    .order-now-btn {
-      margin-top: 10px;
-      display: inline-block;
-      background: #25d366;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 20px;
-      font-weight: bold;
-    }
-    .order-now-btn:hover {
-      background: #22c55e;
-    }
-    .enhanced-footer {
-      background: #222;
-      color: #fff;
-      padding: 40px 0;
-    }
-    .enhanced-footer .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-    .enhanced-footer h4 {
-      margin-bottom: 10px;
-    }
-    .enhanced-footer ul {
-      list-style: none;
-      padding: 0;
-    }
-    .enhanced-footer ul li a {
-      color: #fff;
-      text-decoration: none;
-    }
-    .enhanced-footer input[type=email] {
-      padding: 8px;
-    }
-    .enhanced-footer button {
-      padding: 8px 16px;
-      margin-left: 10px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misha Foodstuffs Limited - Korean Food Mart & Distributor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* ✅ Product image uniform size */
-    .product-card img {
-      width: 200px;
-      height: 200px;
-      object-fit: contain; /* ensures full image visible */
-      display: block;
-      margin: 0 auto;
-      border-radius: 8px;
-      background: #f8f8f8;
-      padding: 5px;
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
 
-    /* Optional: keep grid tidy */
-    .product-card {
-      text-align: center;
-      margin: 15px;
-      border: 1px solid #eee;
-      border-radius: 10px;
-      padding: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      background: #fff;
-    }
-  </style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+   nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+        .header-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #25d366;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid #f8f9fa;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: #ff6b6b;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,107,107,0.1), rgba(255,142,142,0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .product-image::before {
+            opacity: 1;
+        }
+
+        .product-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .product-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Order Section */
+        .order-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .order-button {
+            display: inline-block;
+            background: #25d366;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            margin: 10px;
+        }
+
+        .order-button:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+
+        .contact-title {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .contact-details {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .contact-details a {
+            color: #ff6b6b;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: #ff5252;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header-content p {
+                font-size: 1.1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header class="sticky-nav">
-    <div class="container">
-      <div class="header-content" style="text-align:center; padding: 30px 0;">
-        <h1>Misha Foodstuffs Limited</h1>
-        <p>Korean Food Mart & Distributor</p>
-        <p>Your go-to supplier for quality Korean groceries, kimchi, ramen, snacks & more.</p>
-        <nav style="margin-bottom: 20px;">
-          <ul style="list-style: none; display: flex; justify-content: center; gap: 40px; font-size: 1.1rem;">
-            <li><a href="index.html" style="color: black; text-decoration: none;">Home</a></li>
-            <li><a href="About Us.html" style="color: black; text-decoration: none;">About Us</a></li>
-            <li><a href="contact.html" style="color: black; text-decoration: none;">Contact</a></li>
-            <li><a href="Recipes.html" style="color: black; text-decoration: none;">Recipes</a></li>
-          </ul>
-        </nav>
-        <a href="https://wa.me/c/254714741998" class="cta-button" target="_blank">📱 Order on WhatsApp</a>
-      </div>
-    </div>
-  </header>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Misha Foodstuffs Limited</h1>
+                <p>Korean Food Mart & Distributor</p>
+                <p>Your go-to supplier for quality Korean groceries, kimchi, ramen, snacks & more.</p>
+                <nav style="margin-bottom: 20px;">
+  <ul style="list-style: none; display: flex; justify-content: center; gap: 40px; font-size: 1.4rem;">
+    <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+    <li><a href="Products.html" style="color: white; text-decoration: none;">Products</a></li>
+    <li><a href="Recipes.html" style="color: white; text-decoration: none;">Recipes</a></li>
+    <li><a href="About Us.html" style="color: white; text-decoration: none;">About Us</a></li>
+    <li><a href="contact.html" style="color: white; text-decoration: none;">Contact</a></li>
+    
+  </ul>
+</nav>
+                <a href="https://wa.me/c/254714741998" class="cta-button" target="_blank">
+                    📱 Order on WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
 
-  <section style="background:#fffbe7; text-align:center; padding:20px;">
-    <h2 style="color:#ff6b6b;">🔥 Kimchi Fest: Buy 2 Get 1 Free this Weekend!</h2>
-  </section>
+    <section class="products-section">
+        <div class="container">
+            <h2 class="section-title">Our Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/kimchi.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Kimchi</h3>
+                        <p class="product-description">Cabbage Kimchi - Aged Kimchi  KES 500.00 300g.</p>
+                    </div>
+                </div>
 
-  <input type="text" id="searchBar" placeholder="Search products...">
-  <select id="categoryFilter">
-    <option value="">Filter by Category</option>
-    <option value="kimchi">Kimchi</option>
-    <option value="snacks">Snacks</option>
-    <option value="beverages">Beverages</option>
-    <option value="sauces">Sauces</option>
-    <option value="meats">Meats</option>
-  </select>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/tteokbokki.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Tteokbokki</h3>
+                        <p class="product-description">Chewy Korean rice cakes in spicy-sweet sauce. A popular Korean street food that's perfect for sharing.</p>
+                    </div>
+                </div>
 
-  <!-- Example Product Section -->
-  <div class="container product-list" style="display:flex; flex-wrap:wrap; justify-content:center;">
-    <div class="product-card">
-      <img src="images/kimchi1.jpg" alt="Kimchi 300g">
-      <h3 class="product-title">Kimchi 300g</h3>
-      <p class="product-description">Authentic Korean fermented cabbage.</p>
-      <a href="https://wa.me/254797005509?text=I'm%20interested%20in%20Kimchi%20300g" class="order-now-btn" target="_blank">Order via WhatsApp</a>
-    </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Shin_Small_Cup_Ramen_Spicy.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Instant Ramen</h3>
+                        <p class="product-description">Shin Small Cup Ramen (Spicy) 65g KES 250.00.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Nongshim_Shin_Ramyun_Non_frying.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ramen</h3>
+                        <p class="product-description">Nongshim Shin Ramyun Non frying 1 pack (5pcs) KES 750.00.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Cellophane_Noodles_1kg_KES-2300.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Cellophane Noodles</h3>
+                        <p class="product-description">Korean Cellophane Noodles 1kg KES 2,300.00.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/maxim-instant-coffee-mocha-gold-mild-12g-x-100.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Instant Premium Coffee</h3>
+                        <p class="product-description">Premium Korean instant 3-1 coffee. 20pcs 1 pack KES 1,000.1 BOX KES 4,000 </p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Sari Beef_Bone_Soup _Korean _Ramen_Non Spicy_1pack_5pcs_KES_800.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Sari Beef Bone Soup</h3>
+                        <p class="product-description">Sari Beef Bone Soup Korean Ramen (Non Spicy) 1pack(5pcs) KES 800.00 .</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Anchovy_Flavor_Rice_Noodle_for_Cup_Ramen_KES_300.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Anchovy Flavor Rice Noodle</h3>
+                        <p class="product-description">Anchovy Flavor Rice Noodle for Cup Ramen KES 300.00.</p>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/crown-sando-cream-filled-sandwich-cookies.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Crown Sando Cream Cookie</h3>
+                        <p class="product-description">Crown Sando Cream Cookie KES 500.00 Vanilla Cream / Strawberry Cream / 12pcs </p>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/COUQUE_DASSE_Cookie_White.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">COUQUE D'ASSE Cookie White</h3>
+                        <p class="product-description">COUQUE D'ASSE Cookie White KES 400.00 77g </p>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Cheetos_Snack_BBQ.png')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cheetos Snack BBQ</h3>
+                        <p class="product-description">Cheetos Snack BBQ KES 300.00 Babeque Flavor 84g</p>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/BANANA_KICK_Korean_Snack.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">BANANA KICK Korean Snack</h3>
+                        <p class="product-description">BANANA KICK Korean Snack KES 300.00 Banana Flavor </p>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Pretzel_Snack_Garlic_Butter.png')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pretzel Snack Garlic Butter</h3>
+                        <p class="product-description">Pretzel Snack Garlic Butter KES 250.00 85g </p>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/MAGARET_Korean_Cookie.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">MAGARET Korean Cookie 352g</h3>
+                        <p class="product-description">KES 1,400.00 Butter & Peanut / 16pcs </p>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Kancho_Korean_Choco_Cookie.png')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Kancho Korean Choco Cookie</h3>
+                        <p class="product-description">Kancho Korean Choco Cookie KES 250.00 Chocolate Cookie 54g </p>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Castard_Pound_Cake.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Castard Pound Cake KES 600.00 138g 12pcs</h3>
+                        <p class="product-description">Premium Korean instant 3-1 coffee. 20pcs 1 pack KES 1,000.1 BOX KES 4,000 </p>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Green_Grape_Juice.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Green Grape Juice</h3>
+                        <p class="product-description">Korean Green Grape Juice KES 200.00 238ml </p>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Pear_Soft_Drink.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Pear Soft Drink</h3>
+                        <p class="product-description">Korean Pear Soft Drink </p>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Laver_Crispy_Chips_Snack_30g.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Laver Crispy Chips Snack</h3>
+                        <p class="product-description">Laver Crispy Chips Snack 30g KES 400.00 </p>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Chilly_Crispy_Chips_Snack_60g.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Chilly Crispy Chips Snack </h3>
+                        <p class="product-description">Chilly Crispy Chips Snack 60g KES 600.00 SPICY </p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Otte_Chocalte_cake.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Otte Chocalte cake</h3>
+                        <p class="product-description">Otte Chocalte cake KES 300.00 Chocolate Pound Cake / 12pcs / 150g.</p>
+                     </div>
+                 </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Dumplings_750g.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Dumplings</h3>
+                        <p class="product-description">Korean Dumplings 750g (1pack) KES 1,500.00.</p>
+                    </div>
+                 </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Pork_belly_thick.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pork Belly Thick for Korean Bossam </h3>
+                        <p class="product-description">Pork Belly Thick for Korean Bossam 1kg pack KES 1,500.00 .</p>
+                    </div>
+                </div>  
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Lamb_Shoulder_for_Babeque_1kg_pack.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Lamb Shoulder</h3>
+                        <p class="product-description">Lamb Shoulder for Babeque 1kg pack KES 2,200.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Pork_Cutlet_Doncats_with_Bread_Crumbs_1kg.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Pork Cutlet</h3>
+                        <p class="product-description">Pork Cutlet Doncats with Bread Crumbs 1kg KES 2,700.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Fish_Cakes_5pcs.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Fish Cakes</h3>
+                        <p class="product-description">Korean Fish Cakes 5pcs KES 500.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Whelk_Can-400g.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Whelk Can</h3>
+                        <p class="product-description">Korean Whelk Can 400g KES 1,600.00.</p>
+                    </div>
+                 </div>
+                 <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Saury_fish_Can_Easy_Cooking_400g.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Saury fish Can</h3>
+                        <p class="product-description">Korean Saury fish Can (Easy Cooking) 400g KES 900.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Soy_Sauce_for_Soup.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Soy Sauce</h3>
+                        <p class="product-description">Korean Soy Sauce 500ml.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Pork_Cutlet_Sauce.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Pork Cutlet Sauce</h3>
+                        <p class="product-description">Korean Pork Cutlet Sauce 290g KES 500.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Bulgogi_Beef_Sauce.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Bulgogi Beef Sauce</h3>
+                        <p class="product-description">Korean Bulgogi Beef Sauce 500g KES 800.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Apple_Vineger.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Apple Vineger</h3>
+                        <p class="product-description">Korean Apple Vineger 900ml KES 1,200.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Fish_Sauce.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Fish Sauce</h3>
+                        <p class="product-description">Korean Fish Sauce 800ml KES 1,200.00.</p>
+                    </div>
+                 </div>
+                 <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Anchovy_Sauce.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Anchovy Sauce</h3>
+                        <p class="product-description">Korean Anchovy Sauce 800m KES 1,200.00l.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Mirin_Cooking_Wine.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Mirin</h3>
+                        <p class="product-description">Korean Mirin (Cooking Wine) 900ml KES 900.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Soy_Sauce_for_Soup.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Soy Sauce for Soup</h3>
+                        <p class="product-description">Korean Soy Sauce for Soup 860ml KES 1,500.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Tuna_Liquid_Sauce.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Tuna Liquid Sauce</h3>
+                        <p class="product-description">Korean Tuna Liquid Sauce 500g KES 900.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Allulose_Liquid_485g.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Allulose Liquid</h3>
+                        <p class="product-description">Allulose Liquid 485g (Instead of Sugar) KES 1,400.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Sesame_Oil_500ml.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Sesame Oil</h3>
+                        <p class="product-description">Korean Sesame Oil 500ml - 1700ksh / 1liter - 2900ksh KES 1,600.00 500ml / 1liter.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Sauce_SoySauce.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Soy Sauce</h3>
+                        <p class="product-description">Korean Soy Sauce 500ml KES 500.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Cham_Sauce.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cham Sauce</h3>
+                        <p class="product-description">Cham Sauce (for Babeque) KES 400.00 300g.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/ottogi1.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Corn Syrup</h3>
+                        <p class="product-description">Korean Corn Syrup 1.2kg KES 1,000.00.</p>
+                    </div>
+                 </div>
+                 <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/korean_fine_salt.jpeg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Salt</h3>
+                        <p class="product-description">Korean Salt 4types KES 1,000.00 500g / 1kg.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Pan_Frying_Powder-1kg.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Sweet Pan Cake Powder</h3>
+                        <p class="product-description">Korean Sweet Pan Cake Powder KES 750.00 400gram.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Red_Paper_Powder.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Red Paper Powder</h3>
+                        <p class="product-description">Korean Red Paper Powder (Gochugaru) 500g - KES 1600 / 1kg - KES 3000.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Red_Paper_Paste.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Red Paper Paste</h3>
+                        <p class="product-description">Korean Red Paper Paste 1.8kg KES 2,500.00.</p>
+                    </div>
+                 </div>
+                  <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/SoybeanPaste500G_6adfe1c3-41a6-4355-bdf3-45823898514f.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Soyabeans Paste</h3>
+                        <p class="product-description">Korean Soyabeans Paste 500g KES 900.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Mustard_Powder_300g.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Mustard Powder</h3>
+                        <p class="product-description">Korean Mustard Powder 300g KES 1,000.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Pan_Frying_Powder-1kg.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Sweet Pan Cake Powder</h3>
+                        <p class="product-description">Korean Sweet Pan Cake Powder 400gm KES 750.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean-Wheat_Flour-1kg.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Wheat Flour</h3>
+                        <p class="product-description">Korean Wheat Flour 1kg KES 550.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/PotatoStarch.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Potato Starch</h3>
+                        <p class="product-description">Korean Potato Starch 1kg KES 1,200.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Uganda_Rice.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Uganda Rice</h3>
+                        <p class="product-description">Uganda Rice KES 3,500.00 5kg - KES 1800 / 10kg - KES 3500.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Rice_Cakes-Jeolpyeon.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">orean Rice Cakes Jeolpyeon</h3>
+                        <p class="product-description">Korean Rice Cakes Jeolpyeon/Pounded rice cake 1kg pack KES 900.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Rice_Cake-Cylinder.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Rice Cake Cylinder</h3>
+                        <p class="product-description">Korean Rice Cake (Cylinder Shaped Korea Rice Cakes) 1kg KES 700.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/korean_rice_drink.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Sweet Rice Drink</h3>
+                        <p class="product-description">Korean Sweet Rice Drink, Sikhye 1.5liters KES 550.00.</p>
+                    </div>
+                 </div>
+                
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Young_Radish_Kimchi.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Young Radish Kimchi</h3>
+                        <p class="product-description">Young Radish Kimchi (Altari Kimchi) 500g - KES 500 / 1kg - KES 1000.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Side_dish_Pollack-Fish-in-Red-Paper-sauce-Can.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Side dish Pollack Fish</h3>
+                        <p class="product-description">Korean Side dish Pollack Fish in Red Paper sauce Can.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean-Side-dish-Stewed-in-Soy-Sauce-Can.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Side dish Stewed in Soy Sauce</h3>
+                        <p class="product-description">Korean Side dish Stewed in Soy Sauce Can KES 700.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean-Side-dish-Black-Beans-in-Soy-Sauce-Can.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Side dish Black Beans</h3>
+                        <p class="product-description">Korean Side dish Black Beans in Soy Sauce Can KES 500.00 .</p>
+                    </div>
+                 </div>
+                 <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/chum-churum-original-soju-360ml.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Soju (Liquor)</h3>
+                        <p class="product-description">Korean Soju (Liquor) KES 800.00 .</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean-vegetables.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Vegetable</h3>
+                        <p class="product-description">Korean Vegetable.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Dry_Bracken_100g.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Dry Bracken 100g</h3>
+                        <p class="product-description">Korean Dry Bracken 100g KES 3,000.00</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Shower-Head_Water-Filter.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Shower Head & Filter</h3>
+                        <p class="product-description">Korean Shower Head & Filter KES 2,100.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Rubber_Gloves.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Rubber Gloves</h3>
+                        <p class="product-description">Korean Rubber Gloves KES 500.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Plastic_Gloves.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Plastic Gloves</h3>
+                        <p class="product-description">Plastic Gloves.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Butain_gas.jpeg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Butain gas</h3>
+                        <p class="product-description">Butain gas KES 600.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Electronic_Pressure_Rice_Cooker.jpeg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Electronic Pressure Rice Cooker</h3>
+                        <p class="product-description">Korean Electronic Pressure Rice Cooker KES 25,000.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Plastic_roll_pack.jpeg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Plastic roll pack</h3>
+                        <p class="product-description">Plastic roll pack.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Plant_Collagen_Biotin.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Plant Collagen Biotin Liquid</h3>
+                        <p class="product-description">Korean Plant Collagen Biotin Liquid KES 1,690.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Plant_Collagen_Kombucha_Powder.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Plant Collagen Kombucha Powder</h3>
+                        <p class="product-description">Korean Plant Collagen Kombucha Powder KES 1,690.00.</p>
+                    </div>
+                 </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Korean_Plant-Collagen-Vitamin-D_Jelly.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Korean Plant Collagen Vitamin D Jelly</h3>
+                        <p class="product-description">Korean Plant Collagen Vitamin D Jelly KES 1,690.00.</p>
+                    </div>
+                 </div>
+                
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Cooking_Fan_size.PNG')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cooking Pan</h3>
+                        <p class="product-description">Cooking Pan (size 26cm / 28cm) KES 4,500.00</p>
+                    </div>
+                 </div>
+                    <div class="product-card">
+                    <div class="product-image" style="background-image: url('images/Otte_Chocalte_ake.jpg')"></div>
+                    <div class="product-info">
+                        <h3 class="product-title"></h3>
+                        <p class="product-description"></p>
+                    </div>    
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="product-card">
-      <img src="images/snack1.jpg" alt="Honey Butter Chips">
-      <h3 class="product-title">Honey Butter Chips</h3>
-      <p class="product-description">Sweet & savory Korean potato chips.</p>
-      <a href="https://wa.me/254797005509?text=I'm%20interested%20in%20Honey%20Butter%20Chips" class="order-now-btn" target="_blank">Order via WhatsApp</a>
-    </div>
+    <section class="order-section">
+        <div class="container">
+            <h2 class="section-title">Ready to Order?</h2>
+            <p style="font-size: 1.2rem; color: #666; margin-bottom: 30px;">Contact us on WhatsApp to place your order!</p>
+            
+            <a href="https://wa.me/254797005509" class="order-button" target="_blank">Order Now</a>
+        </div>
+    </section>
 
-    <div class="product-card">
-      <img src="images/ramen1.jpg" alt="Spicy Ramen">
-      <h3 class="product-title">Spicy Ramen</h3>
-      <p class="product-description">Classic Korean noodles with bold spice.</p>
-      <a href="https://wa.me/254797005509?text=I'm%20interested%20in%20Spicy%20Ramen" class="order-now-btn" target="_blank">Order via WhatsApp</a>
-    </div>
-  </div>
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3 class="contact-title">Visit Us</h3>
+                    <p class="contact-details">Samaki Drive Number 13<br>Nairobi, Kenya</p>
+                </div>
 
-  <footer class="enhanced-footer">
-    <div class="container">
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Recipes</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Follow Us</h4>
-        <p>Instagram | Facebook | TikTok</p>
-      </div>
-      <div>
-        <h4>Newsletter</h4>
-        <input type="email" placeholder="Your email">
-        <button>Subscribe</button>
-      </div>
-    </div>
-  </footer>
+                <div class="contact-item">
+                    <div class="contact-icon">☎️</div>
+                    <h3 class="contact-title">Call Us </h3>
+                    <p class="contact-details">
+                        <a href="tel:+254797005509">+254 797 005509</a>
+                    </p>
+                </div>
 
-  <script>
-    const searchInput = document.getElementById('searchBar');
-    const categoryFilter = document.getElementById('categoryFilter');
-    const productCards = document.querySelectorAll('.product-card');
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-details">
+                        <a href="mailto:mishafoodstuffs@gmail.com">mishafoodstuffs@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    function filterProducts() {
-      const searchTerm = searchInput.value.toLowerCase();
-      const selectedCategory = categoryFilter.value;
-
-      productCards.forEach(card => {
-        const title = card.querySelector('.product-title')?.textContent.toLowerCase();
-        const desc = card.querySelector('.product-description')?.textContent.toLowerCase();
-        const matchSearch = title?.includes(searchTerm) || desc?.includes(searchTerm);
-        const matchCategory = !selectedCategory || title?.includes(selectedCategory);
-        card.style.display = matchSearch && matchCategory ? 'block' : 'none';
-      });
-    }
-
-    searchInput.addEventListener('keyup', filterProducts);
-    categoryFilter.addEventListener('change', filterProducts);
-  </script>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Misha Foodstuffs Limited. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
