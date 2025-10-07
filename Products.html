@@ -1,115 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product Gallery</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Misha Foodstuffs Limited - Korean Food Mart & Distributor</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      background: #fafafa;
-      margin: 0;
-      padding: 20px;
+      font-family: 'Arial', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+      line-height: 1.6;
     }
-
-    .product-container {
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    nav ul li:hover .dropdown {
+      display: block;
+    }
+    .dropdown {
+      display: none;
+      position: absolute;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    #searchBar, #categoryFilter {
+      padding: 10px;
+      width: 100%;
+      margin: 10px auto;
+      display: block;
+      max-width: 500px;
+    }
+    .order-now-btn {
+      margin-top: 10px;
+      display: inline-block;
+      background: #25d366;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+    .order-now-btn:hover {
+      background: #22c55e;
+    }
+    .enhanced-footer {
+      background: #222;
+      color: #fff;
+      padding: 40px 0;
+    }
+    .enhanced-footer .container {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
+      justify-content: space-between;
+    }
+    .enhanced-footer h4 {
+      margin-bottom: 10px;
+    }
+    .enhanced-footer ul {
+      list-style: none;
+      padding: 0;
+    }
+    .enhanced-footer ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .enhanced-footer input[type=email] {
+      padding: 8px;
+    }
+    .enhanced-footer button {
+      padding: 8px 16px;
+      margin-left: 10px;
     }
 
+    /* ✅ Product image uniform size */
+    .product-card img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain; /* ensures full image visible */
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+      background: #f8f8f8;
+      padding: 5px;
+    }
+
+    /* Optional: keep grid tidy */
     .product-card {
-      width: 200px; /* uniform width */
+      text-align: center;
+      margin: 15px;
       border: 1px solid #eee;
       border-radius: 10px;
-      overflow: hidden;
-      text-align: center;
-      padding: 8px;
-      background: #fff;
+      padding: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
-    }
-
-    .product-card:hover {
-      transform: scale(1.04);
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 200px; /* fixed square size */
-      object-fit: contain; /* full image visible */
-      border-radius: 6px;
-      background: #f9f9f9;
-      padding: 4px;
-    }
-
-    .product-name {
-      font-size: 14px;
-      font-weight: bold;
-      color: #333;
-      margin: 8px 0;
-    }
-
-    .product-price {
-      font-size: 13px;
-      color: #888;
-    }
-
-    @media (max-width: 768px) {
-      .product-card {
-        width: 45%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .product-card {
-        width: 90%;
-      }
+      background: #fff;
     }
   </style>
 </head>
 <body>
+  <header class="sticky-nav">
+    <div class="container">
+      <div class="header-content" style="text-align:center; padding: 30px 0;">
+        <h1>Misha Foodstuffs Limited</h1>
+        <p>Korean Food Mart & Distributor</p>
+        <p>Your go-to supplier for quality Korean groceries, kimchi, ramen, snacks & more.</p>
+        <nav style="margin-bottom: 20px;">
+          <ul style="list-style: none; display: flex; justify-content: center; gap: 40px; font-size: 1.1rem;">
+            <li><a href="index.html" style="color: black; text-decoration: none;">Home</a></li>
+            <li><a href="About Us.html" style="color: black; text-decoration: none;">About Us</a></li>
+            <li><a href="contact.html" style="color: black; text-decoration: none;">Contact</a></li>
+            <li><a href="Recipes.html" style="color: black; text-decoration: none;">Recipes</a></li>
+          </ul>
+        </nav>
+        <a href="https://wa.me/c/254714741998" class="cta-button" target="_blank">📱 Order on WhatsApp</a>
+      </div>
+    </div>
+  </header>
 
-  <div class="product-container">
+  <section style="background:#fffbe7; text-align:center; padding:20px;">
+    <h2 style="color:#ff6b6b;">🔥 Kimchi Fest: Buy 2 Get 1 Free this Weekend!</h2>
+  </section>
 
+  <input type="text" id="searchBar" placeholder="Search products...">
+  <select id="categoryFilter">
+    <option value="">Filter by Category</option>
+    <option value="kimchi">Kimchi</option>
+    <option value="snacks">Snacks</option>
+    <option value="beverages">Beverages</option>
+    <option value="sauces">Sauces</option>
+    <option value="meats">Meats</option>
+  </select>
+
+  <!-- Example Product Section -->
+  <div class="container product-list" style="display:flex; flex-wrap:wrap; justify-content:center;">
     <div class="product-card">
-      <img src="images/product1.jpg" alt="Product 1">
-      <div class="product-name">Product 1</div>
-      <div class="product-price">KSh 500</div>
+      <img src="images/kimchi1.jpg" alt="Kimchi 300g">
+      <h3 class="product-title">Kimchi 300g</h3>
+      <p class="product-description">Authentic Korean fermented cabbage.</p>
+      <a href="https://wa.me/254797005509?text=I'm%20interested%20in%20Kimchi%20300g" class="order-now-btn" target="_blank">Order via WhatsApp</a>
     </div>
 
     <div class="product-card">
-      <img src="images/product2.jpg" alt="Product 2">
-      <div class="product-name">Product 2</div>
-      <div class="product-price">KSh 650</div>
+      <img src="images/snack1.jpg" alt="Honey Butter Chips">
+      <h3 class="product-title">Honey Butter Chips</h3>
+      <p class="product-description">Sweet & savory Korean potato chips.</p>
+      <a href="https://wa.me/254797005509?text=I'm%20interested%20in%20Honey%20Butter%20Chips" class="order-now-btn" target="_blank">Order via WhatsApp</a>
     </div>
 
     <div class="product-card">
-      <img src="images/product3.jpg" alt="Product 3">
-      <div class="product-name">Product 3</div>
-      <div class="product-price">KSh 720</div>
+      <img src="images/ramen1.jpg" alt="Spicy Ramen">
+      <h3 class="product-title">Spicy Ramen</h3>
+      <p class="product-description">Classic Korean noodles with bold spice.</p>
+      <a href="https://wa.me/254797005509?text=I'm%20interested%20in%20Spicy%20Ramen" class="order-now-btn" target="_blank">Order via WhatsApp</a>
     </div>
-
-    <div class="product-card">
-      <img src="images/product4.jpg" alt="Product 4">
-      <div class="product-name">Product 4</div>
-      <div class="product-price">KSh 550</div>
-    </div>
-
-    <div class="product-card">
-      <img src="images/product5.jpg" alt="Product 5">
-      <div class="product-name">Product 5</div>
-      <div class="product-price">KSh 480</div>
-    </div>
-
-    <div class="product-card">
-      <img src="images/product6.jpg" alt="Product 6">
-      <div class="product-name">Product 6</div>
-      <div class="product-price">KSh 800</div>
-    </div>
-
   </div>
 
+  <footer class="enhanced-footer">
+    <div class="container">
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Recipes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <p>Instagram | Facebook | TikTok</p>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <input type="email" placeholder="Your email">
+        <button>Subscribe</button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const searchInput = document.getElementById('searchBar');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const productCards = document.querySelectorAll('.product-card');
+
+    function filterProducts() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedCategory = categoryFilter.value;
+
+      productCards.forEach(card => {
+        const title = card.querySelector('.product-title')?.textContent.toLowerCase();
+        const desc = card.querySelector('.product-description')?.textContent.toLowerCase();
+        const matchSearch = title?.includes(searchTerm) || desc?.includes(searchTerm);
+        const matchCategory = !selectedCategory || title?.includes(selectedCategory);
+        card.style.display = matchSearch && matchCategory ? 'block' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('keyup', filterProducts);
+    categoryFilter.addEventListener('change', filterProducts);
+  </script>
 </body>
 </html>
